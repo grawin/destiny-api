@@ -1,0 +1,7 @@
+{
+  "name": "destiny-api",
+  "description": "bungie.net API for Destiny stats using Node.js Express 4",
+  "repository": "https://github.com/metapod/destiny-api",
+  "logo": "",
+  "keywords": ["node", "express", "static"]
+}
