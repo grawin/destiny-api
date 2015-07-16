@@ -4,6 +4,8 @@ An API to interface with Bungie.net for Destiny stats using Node.js / [Express 4
 
 ## Usage
 
+### Routes
+
 Use the destiny-api by hosting it as a node.js application then query with the following routes.
 
 | Code | Description |
@@ -15,3 +17,24 @@ Use the destiny-api by hosting it as a node.js application then query with the f
 | `/:platform/Account/:membershipId/Character/:characterId/Activities/` | Get activities for the provided character. |
 | `/Stats/ActivityHistory/:platform/:membershipId/:characterId/:mode` | Get activity history for the provided character on the given type (Raid, Strike, etc). |
 
+### Handling JSON
+
+Handle the JSON from the destiny-api using code similar to the following:
+
+```javascript
+function getJson(routeUrl, success, failure) {	
+	var searchUrl = 'yourAppBaseURLHere' + routeUrl + '?callback=?';
+	return $.ajax({
+		url: searchUrl,
+		dataType: "jsonp",
+		data: "data=yeah",
+		jsonp: 'callback',
+		success: function (data) {
+			success(JSON.parse(data));
+		},
+		error: function (result) {
+			failure(result);
+		}
+	});
+}
+```
